@@ -1,13 +1,11 @@
 from google.oauth2.service_account import Credentials
 from openai import OpenAI
 from dotenv import load_dotenv
-import os
 
 import gspread
 import pandas as pd
+import os
 
-load_dotenv()
-api_key = os.getenv("API_KEY")
 
 # Define the scope
 SCOPE = ["https://www.googleapis.com/auth/spreadsheets",
@@ -25,6 +23,9 @@ creds = Credentials.from_service_account_file(
 
 # Authorize client
 google_client = gspread.authorize(creds)
+
+load_dotenv()
+api_key = os.getenv("API_KEY")
 
 openai_client = OpenAI(
     api_key=api_key
